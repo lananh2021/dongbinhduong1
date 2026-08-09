@@ -1,0 +1,15 @@
+IMAGE SOURCES
+
+1) assets/images/logo.png + logo.webp
+Nguồn: Logo do chủ website cung cấp trong cuộc trò chuyện.
+Xử lý: giữ nguyên nhận diện, chuyển thêm bản WebP tối ưu.
+
+2) assets/images/hero-siteplan.svg
+Nguồn: Minh họa vector tự tạo cho landing page; KHÔNG phải ảnh thực tế dự án.
+Mục đích: minh họa khái niệm mặt bằng/lô đất mà không bịa ảnh dự án.
+
+3) assets/images/consultation.svg
+Nguồn: Minh họa vector tự tạo cho landing page; KHÔNG phải ảnh khách hàng thật.
+
+GHI CHÚ VỀ ẢNH INTERNET
+Đã nghiên cứu nguồn Pexels phù hợp, nhưng môi trường tạo file hiện tại không thể phân giải tên miền images.pexels.com khi tải trực tiếp, nên không có ảnh Internet nào được ghi giả là đã tải thành công. Khi có ảnh thực tế của dự án, nên thay các minh họa bằng ảnh thật đã được xác minh quyền sử dụng.
