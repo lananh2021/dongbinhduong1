@@ -27,3 +27,9 @@ LANDING PAGE ĐÔNG BÌNH DƯƠNG
 8. Trước khi chạy quảng cáo
 - Xác nhận lại giá theo từng nền, vị trí, hồ sơ và điều kiện giao dịch.
 - Nên thay minh họa bằng ảnh thực tế dự án có quyền sử dụng.
+
+
+CẤU HÌNH FORM HIỆN TẠI
+- Form đã được gắn Google Apps Script Web App do chủ website cung cấp.
+- Endpoint: https://script.google.com/macros/s/AKfycbzPkpcSDdmM8jnaLFxPCmODdNmoLF8kXtjbXE_wBE2VeAtG0IYsJf2UO3__Cf6ZiV4/exec
+- Front-end gửi JSON bằng POST với Content-Type text/plain để tránh preflight CORS. Apps Script nên đọc dữ liệu bằng JSON.parse(e.postData.contents).

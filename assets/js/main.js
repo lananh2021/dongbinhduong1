@@ -1,4 +1,63 @@
-const menu=document.querySelector('.menu'),links=document.querySelector('.links');menu?.addEventListener('click',()=>{const o=links.classList.toggle('open');menu.setAttribute('aria-expanded',o)});document.querySelectorAll('.links a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
-const FORM_ENDPOINT=''; // Dán URL Google Apps Script hoặc API thật vào đây khi sẵn sàng.
-const form=document.querySelector('#lead-form'),status=document.querySelector('#form-status');
-form?.addEventListener('submit',async e=>{e.preventDefault();const btn=form.querySelector('button[type=submit]');if(!form.reportValidity())return;const phone=form.phone.value.replace(/\s/g,'');if(!/^(0|\+84)\d{8,10}$/.test(phone)){status.textContent='Vui lòng kiểm tra lại số điện thoại.';return}btn.disabled=true;btn.textContent='Đang xử lý…';status.textContent='';try{if(!FORM_ENDPOINT){await new Promise(r=>setTimeout(r,650));status.textContent='Chế độ demo: thông tin chưa được gửi lên máy chủ. Vui lòng gọi 0919 940 960 để được tư vấn ngay.';}else{const r=await fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.fromEntries(new FormData(form)))});if(!r.ok)throw new Error();status.textContent='Đã gửi thông tin. Chúng tôi sẽ liên hệ lại sớm.';form.reset()}}catch{status.textContent='Chưa thể gửi thông tin. Vui lòng gọi 0919 940 960.'}finally{btn.disabled=false;btn.textContent='Đăng ký nhận tư vấn'}});
+const menu = document.querySelector('.menu');
+const links = document.querySelector('.links');
+
+menu?.addEventListener('click', () => {
+  const opened = links.classList.toggle('open');
+  menu.setAttribute('aria-expanded', opened);
+});
+
+document.querySelectorAll('.links a').forEach((a) => {
+  a.addEventListener('click', () => {
+    links.classList.remove('open');
+    menu?.setAttribute('aria-expanded', 'false');
+  });
+});
+
+// Google Apps Script Web App nhận dữ liệu form.
+const FORM_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzPkpcSDdmM8jnaLFxPCmODdNmoLF8kXtjbXE_wBE2VeAtG0IYsJf2UO3__Cf6ZiV4/exec';
+
+const form = document.querySelector('#lead-form');
+const status = document.querySelector('#form-status');
+
+form?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+
+  const button = form.querySelector('button[type="submit"]');
+  if (!form.reportValidity()) return;
+
+  const phone = form.phone.value.replace(/[\s.()-]/g, '');
+  if (!/^(0|\+84)\d{8,10}$/.test(phone)) {
+    status.textContent = 'Vui lòng kiểm tra lại số điện thoại.';
+    form.phone.focus();
+    return;
+  }
+
+  const payload = Object.fromEntries(new FormData(form));
+  payload.phone = phone;
+  payload.source = 'Landing Page Đông Bình Dương';
+  payload.submittedAt = new Date().toISOString();
+
+  button.disabled = true;
+  button.textContent = 'Đang gửi…';
+  status.textContent = 'Đang gửi thông tin, vui lòng chờ…';
+
+  try {
+    // Dùng text/plain để tránh preflight CORS nhưng vẫn giữ payload JSON
+    // cho Apps Script đọc qua e.postData.contents.
+    await fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    });
+
+    status.textContent = 'Thông tin đã được gửi. Vui lòng giữ điện thoại để đội ngũ tư vấn liên hệ lại.';
+    form.reset();
+  } catch (error) {
+    console.error('Form submit error:', error);
+    status.textContent = 'Chưa thể gửi thông tin. Vui lòng gọi 0919 940 960 để được hỗ trợ.';
+  } finally {
+    button.disabled = false;
+    button.textContent = 'Đăng ký nhận tư vấn';
+  }
+});
