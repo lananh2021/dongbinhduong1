@@ -718,7 +718,7 @@
 
 <section class="section" id="gia">
   <div class="container">
-    <div class="eyebrow">Định giá thị trường</div>
+    <div class="eyebrow">Nội dung tạo giá trị tìm kiếm</div>
     <h2>Tham Khảo Giá Đất Đông Bình Dương 2026 mới nhất</h2>
     <p class="lead">Để giúp quý khách hàng dễ dàng định hình mức giá trước khi ký gửi, dưới đây là bảng tổng hợp giá giao dịch tham khảo mới nhất tại KĐT Đông Bình Dương theo từng phân khu diện tích:</p>
 
@@ -778,7 +778,7 @@
   <div class="container">
     <div class="eyebrow">Hình ảnh nhà mẫu dự án</div>
     <h2>Hình Ảnh Nhà Mẫu Dự Án Đông Bình Dương</h2>
-    <p class="lead">Cần xin bản vẽ mẫu & dự toán chi phí xây căn nhà phố Đông Bình Dương này? Nhắn em ngay nhé!</p>
+    <p class="lead">Bộ hình nhà mẫu và phối cảnh kiến trúc giúp khách hàng có thêm góc nhìn trực quan về phong cách xây dựng, mặt tiền và không gian sống tại dự án Đông Bình Dương. Hình ảnh mang tính tham khảo cho thiết kế và định hướng xây dựng thực tế.</p>
     <div class="model-house-gallery">
       <figure class="model-house-card"><img src="assets/images/nha-mau-dong-binh-duong-01.webp" alt="Nhà mẫu góc dự án Đông Bình Dương" loading="lazy"><figcaption>Mẫu nhà góc hiện đại tại dự án Đông Bình Dương.</figcaption></figure>
       <figure class="model-house-card"><img src="assets/images/nha-mau-dong-binh-duong-02.webp" alt="Nhà phố liền kề mẫu dự án Đông Bình Dương" loading="lazy"><figcaption>Mẫu nhà phố liền kề với mặt tiền hiện đại và nhiều mảng xanh.</figcaption></figure>
@@ -1007,11 +1007,13 @@
     statusEl.textContent = 'Đang gửi thông tin...';
     statusEl.style.color = '#7D7463';
 
-    const lotCode = document.getElementById('lot').value.trim();
-    const area = document.getElementById('area').value.trim();
-    const askingPrice = document.getElementById('price').value.trim();
-    const urgency = document.getElementById('urgency').value;
-    const note = document.getElementById('note').value.trim();
+    // Một số phiên bản form không có các ô lot / area / price.
+    // Dùng optional chaining để tránh lỗi JavaScript làm form đứng ở "Đang gửi thông tin...".
+    const lotCode = document.getElementById('lot')?.value.trim() || '';
+    const area = document.getElementById('area')?.value.trim() || '';
+    const askingPrice = document.getElementById('price')?.value.trim() || '';
+    const urgency = document.getElementById('urgency')?.value || '';
+    const note = document.getElementById('note')?.value.trim() || '';
 
     const need = [
       lotCode && `Mã lô/mã nền: ${lotCode}`,
