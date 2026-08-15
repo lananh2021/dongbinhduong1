@@ -1,8 +1,17 @@
+V9 FULL - KÝ GỬI DỰ ÁN ĐÔNG BÌNH DƯƠNG
 
+Cấu trúc:
+- index.html
+- assets/images/ (đầy đủ ảnh mà index.html đang sử dụng + bản gốc để dự phòng)
 
-CẬP NHẬT V2
-- Giữ nguyên cấu trúc SEO và form Google Apps Script của bản trước.
-- Thêm 2 ảnh thực tế, 3 ảnh phối cảnh, 1 ảnh mặt bằng và logo mới do chủ website cung cấp.
-- Tạo bản WebP cho ảnh để giảm dung lượng.
-- Ảnh dưới màn hình đầu dùng loading="lazy".
-- Font đổi sang Segoe UI / Tahoma / Arial để hiển thị tiếng Việt ổn định, không tải font ngoài.
+Google Maps:
+- Đã giữ bản đồ Đông Bình Dương đúng iframe ở bản V9.
+
+Liên hệ:
+- Zalo: https://zalo.me/0919940960
+- Fanpage: https://www.facebook.com/dongbinhduong.vn
+- Điện thoại: 0919940960
+
+Kiểm tra tự động:
+- Tổng ảnh được HTML tham chiếu: 13
+- Ảnh thiếu: 0

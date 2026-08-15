@@ -137,7 +137,7 @@
     .hero-identity:before{width:360px;height:360px;right:-135px;top:-120px}
     .hero-identity:after{width:260px;height:260px;left:-110px;bottom:-130px}
     .square-logo-wrap{
-      width:220px;aspect-ratio:1;border-radius:26px;background:#fff;
+      width:350px;aspect-ratio:1;border-radius:26px;background:#fff;
       border:1px solid var(--line);padding:18px;display:grid;place-items:center;position:relative;z-index:1;
       box-shadow:0 12px 34px rgba(102,76,18,.08)
     }
@@ -257,10 +257,33 @@
     .project-gallery figure,.plan-card,.brand-showcase{margin:0;background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 10px 30px rgba(102,76,18,.045)}
     .project-gallery img{width:100%;height:100%;object-fit:cover}
     .main-photo{min-height:520px}
+    .main-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
     .side-stack{display:grid;grid-template-rows:1fr 1fr;gap:18px}
     .side-photo{min-height:250px}
-    .brand-showcase{display:grid;grid-template-columns:145px 1fr;gap:20px;align-items:center;padding:20px}
-    .brand-showcase img{width:145px;height:145px;object-fit:contain}
+    .brand-showcase{
+      display:grid;
+      grid-template-columns:130px minmax(0,1fr);
+      gap:24px;
+      align-items:center;
+      padding:26px;
+    }
+    .brand-showcase img{
+      width:130px;
+      height:130px;
+      object-fit:cover;
+      border-radius:16px;
+    }
+    .brand-showcase h3{
+      margin:0 0 12px;
+      text-align:left;
+      line-height:1.35;
+    }
+    .brand-showcase p{
+      margin:0;
+      text-align:justify;
+      text-justify:inter-word;
+      line-height:1.7;
+    }
     .house-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px}
     .house-gallery figure{margin:0;background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden}
     .house-gallery img{width:100%;aspect-ratio:4/5;object-fit:cover}
@@ -270,7 +293,7 @@
 
 
     .square-project-photo{
-      width:220px;aspect-ratio:1;border-radius:26px;background:#fff;
+      width:350px;aspect-ratio:1;border-radius:26px;background:#fff;
       border:1px solid var(--line);overflow:hidden;position:relative;z-index:1;
       box-shadow:0 12px 34px rgba(102,76,18,.08)
     }
@@ -300,6 +323,94 @@
       text-justify: inter-word;
     }
 
+
+    .model-house-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+    .model-house-card{margin:0;background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 10px 30px rgba(102,76,18,.05)}
+    .model-house-card img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+    .model-house-card figcaption{padding:14px 16px 16px;color:var(--muted);font-size:13px;text-align:left}
+    .model-house-card.wide{grid-column:span 2}
+    .model-house-card.wide img{aspect-ratio:16/9}
+
+
+    /* Canh đều toàn bộ nội dung văn bản hai bên */
+    main p,
+    footer p,
+    .hero-quote,
+    .card p,
+    .check p,
+    .lux-box p,
+    .intent p,
+    .brand-showcase p,
+    details p,
+    .seo-support p,
+    .note {
+      text-align: justify !important;
+      text-justify: inter-word;
+    }
+
+
+    .map-wrap{
+      margin-top:30px;
+      border:1px solid var(--line);
+      border-radius:24px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow:0 12px 34px rgba(102,76,18,.06);
+    }
+    .map-wrap iframe{
+      width:100%;
+      height:480px;
+      border:0;
+      display:block;
+    }
+    .map-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    /* Nút liên hệ nổi */
+    .contact-float{
+      position:fixed;
+      right:18px;
+      top:50%;
+      transform:translateY(-50%);
+      z-index:60;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .contact-float a{
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#fff;
+      font-weight:900;
+      box-shadow:0 10px 28px rgba(0,0,0,.16);
+      transition:.2s ease;
+    }
+    .contact-float a:hover{
+      transform:scale(1.06);
+      color:#fff;
+    }
+    .contact-float .zalo{
+      background:#1688f0;
+      font-size:13px;
+    }
+    .contact-float .facebook{
+      background:#1877f2;
+      font-size:27px;
+      font-family:Arial,sans-serif;
+    }
+    .contact-float .phone{
+      background:#d91414;
+      font-size:24px;
+    }
+
     @media(max-width:920px){
       .menu-btn{display:block}
       .nav-links{
@@ -308,22 +419,48 @@
       }
       .nav-links.open{display:flex}
       .hero-grid,.split,.form-wrap,.project-gallery{grid-template-columns:1fr}
-      .grid3,.grid4,.seo-support,.house-gallery{grid-template-columns:1fr 1fr}
+      .grid3,.grid4,.seo-support,.house-gallery,.model-house-gallery{grid-template-columns:1fr 1fr}
       .hero-identity{min-height:420px}
     }
 
     @media(max-width:620px){
+      .map-wrap iframe{height:360px}
+      .contact-float{
+        right:10px;
+        top:auto;
+        bottom:78px;
+        transform:none;
+        gap:9px;
+      }
+      .contact-float a{
+        width:48px;
+        height:48px;
+      }
+
+      .brand-showcase{
+        grid-template-columns:1fr;
+        padding:22px;
+      }
+      .brand-showcase img{
+        width:100%;
+        height:auto;
+        max-height:260px;
+        object-fit:cover;
+      }
+
       .container{width:min(calc(100% - 24px),var(--container))}
       .logo-horizontal img{width:205px}
       .section{padding:64px 0}
       .hero{padding:55px 0 58px}
       h1{font-size:42px}
       h2{font-size:34px}
-      .grid3,.grid4,.seo-support,.intent-grid,.form,.footer-grid,.trustbar,.house-gallery{grid-template-columns:1fr}
+      .grid3,.grid4,.seo-support,.intent-grid,.form,.footer-grid,.trustbar,.house-gallery,.model-house-gallery{grid-template-columns:1fr}
       .form-wrap{padding:24px}
       .field.full,.form .btn,.status{grid-column:auto}
       .float-call{left:12px;right:12px;text-align:center}
-      .square-logo-wrap{width:180px}
+      .square-logo-wrap{width:260px}
+      .square-project-photo{width:260px}
+      .model-house-card.wide{grid-column:auto}
     }
   </style>
 
@@ -391,6 +528,8 @@
       <a href="#quy-trinh">Quy trình</a>
       <a href="#gia">Tham khảo giá</a>
       <a href="#hinh-anh-du-an">Hình ảnh</a>
+      <a href="#nha-mau">Nhà mẫu</a>
+      <a href="#vi-tri-google-maps">Vị trí</a>
       <a href="#faq">FAQ</a>
       <a class="btn btn-primary" href="#ky-gui">Gửi thông tin ký gửi</a>
     </nav>
@@ -477,7 +616,7 @@
     <p class="lead">Một trong những yếu tố giúp việc bán đất dự án Đông Bình Dương diễn ra thuận lợi chính là thông tin pháp lý minh bạch và tiến độ hạ tầng thực tế.</p>
     <div class="project-gallery">
       <figure class="main-photo">
-        <img src="assets/images/du-an-dong-binh-duong-thuc-te-01.webp" alt="Hình ảnh thực tế dự án Đông Bình Dương nhìn từ trên cao" width="960" height="720" loading="lazy">
+        <img src="assets/images/du-an-dong-binh-duong-thuc-te-ro-net.webp" alt="Hình ảnh thực tế dự án Đông Bình Dương nhìn từ trên cao" width="960" height="720" loading="lazy">
       </figure>
       <div class="side-stack">
         <figure class="side-photo">
@@ -633,6 +772,22 @@
   </div>
 </section>
 
+
+<section class="section section-soft" id="nha-mau">
+  <div class="container">
+    <div class="eyebrow">Hình ảnh nhà mẫu dự án</div>
+    <h2>Hình Ảnh Nhà Mẫu Dự Án Đông Bình Dương</h2>
+    <p class="lead">Bộ hình nhà mẫu và phối cảnh kiến trúc giúp khách hàng có thêm góc nhìn trực quan về phong cách xây dựng, mặt tiền và không gian sống tại dự án Đông Bình Dương. Hình ảnh mang tính tham khảo cho thiết kế và định hướng xây dựng thực tế.</p>
+    <div class="model-house-gallery">
+      <figure class="model-house-card"><img src="assets/images/nha-mau-dong-binh-duong-01.webp" alt="Nhà mẫu góc dự án Đông Bình Dương" loading="lazy"><figcaption>Mẫu nhà góc hiện đại tại dự án Đông Bình Dương.</figcaption></figure>
+      <figure class="model-house-card"><img src="assets/images/nha-mau-dong-binh-duong-02.webp" alt="Nhà phố liền kề mẫu dự án Đông Bình Dương" loading="lazy"><figcaption>Mẫu nhà phố liền kề với mặt tiền hiện đại và nhiều mảng xanh.</figcaption></figure>
+      <figure class="model-house-card"><img src="assets/images/nha-mau-dong-binh-duong-04.webp" alt="Nhà phố đơn lập mẫu dự án Đông Bình Dương" loading="lazy"><figcaption>Mẫu nhà phố tối ưu chiều cao và không gian sử dụng.</figcaption></figure>
+      <figure class="model-house-card wide"><img src="assets/images/nha-mau-dong-binh-duong-03.webp" alt="Dãy nhà phố mẫu dự án Đông Bình Dương" loading="lazy"><figcaption>Phối cảnh dãy nhà phố đồng bộ kiến trúc tại dự án Đông Bình Dương.</figcaption></figure>
+      <figure class="model-house-card"><img src="assets/images/nha-mau-dong-binh-duong-05.webp" alt="Phối cảnh nhà phố thương mại dự án Đông Bình Dương" loading="lazy"><figcaption>Phối cảnh tuyến nhà phố thương mại và không gian đường nội khu.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
 <section class="section" id="mat-bang">
   <div class="container">
     <div class="eyebrow">Mặt bằng dự án</div>
@@ -640,6 +795,30 @@
     <p class="lead">Mặt bằng giúp chủ đất và khách quan tâm xác định vị trí tương đối của sản phẩm. Khi đăng từng lô ký gửi, nên đánh dấu đúng vị trí để dễ đối chiếu.</p>
     <div class="plan-card">
       <img src="assets/images/mat-bang-du-an-dong-binh-duong.webp" alt="Mặt bằng tổng thể dự án Đông Bình Dương" width="1200" height="565" loading="lazy">
+    </div>
+  </div>
+</section>
+
+
+<section class="section section-soft" id="vi-tri-google-maps">
+  <div class="container">
+    <div class="eyebrow">Vị trí dự án</div>
+    <h2>Vị Trí Dự Án Đông Bình Dương Trên Google Maps</h2>
+    <p class="lead">Xem vị trí dự án Đông Bình Dương trên bản đồ để thuận tiện tra cứu đường đi, khu vực xung quanh và lên lịch xem thực tế.</p>
+
+    <div class="map-wrap">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1461.3344482466264!2d106.76984791104434!3d10.94111680544506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xceadf4cf2f48ea9%3A0xc7c881936f56b413!2zxJDDtG5nIELDrG5oIETGsMahbmc!5e1!3m2!1svi!2s!4v1786775515890!5m2!1svi!2s"
+        title="Vị trí dự án Đông Bình Dương trên Google Maps"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="map-actions">
+      <a class="btn btn-primary" href="https://share.google/8EHKDP52BQWrSNTCm" target="_blank" rel="noopener noreferrer">Mở Google Maps</a>
+      <a class="btn btn-outline" href="tel:0919940960">Gọi 0919 940 960</a>
     </div>
   </div>
 </section>
@@ -876,5 +1055,12 @@
     }
   });
 </script>
+
+<div class="contact-float" aria-label="Liên hệ nhanh">
+  <a class="zalo" href="https://zalo.me/0919940960" target="_blank" rel="noopener noreferrer" aria-label="Nhắn Zalo">Zalo</a>
+  <a class="facebook" href="https://www.facebook.com/dongbinhduong.vn" target="_blank" rel="noopener noreferrer" aria-label="Mở Fanpage Facebook">f</a>
+  <a class="phone" href="tel:0919940960" aria-label="Gọi 0919 940 960">☎</a>
+</div>
+
 </body>
 </html>
